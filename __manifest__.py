@@ -14,7 +14,7 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['website','website_sale','base'],
+    'depends': ['website','base','stock'],
 
     'data': [
     ],
