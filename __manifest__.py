@@ -17,6 +17,7 @@
     'depends': ['website','base','stock'],
 
     'data': [
+        'data/amirah_data.xml',
     ],
 
     'qweb': [
