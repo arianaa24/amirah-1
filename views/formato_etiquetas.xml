@@ -1,0 +1,49 @@
+<odoo>
+
+    <report
+        id="report_formato_etiquetas"
+        model="stock.picking"
+        string="Etiquetas"
+        name="amirah.formato_etiquetas"
+        file="amirah.formato_etiquetas"
+        paperformat="amirah.paperformat_etiquetas"
+        report_type="qweb-pdf" />
+
+    <template id="formato_etiquetas">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="doc">
+                
+                <t t-foreach="doc.move_ids_without_package" t-as="line">
+                    <t t-foreach="range(int(line.product_uom_qty))" t-as="l">
+                        <div class="page" style="page-break-after: always;">
+                            <table style="width:100%;">
+                               
+                                <tr style="height:10px;"><td valign="center" style="height:10px;"><div align="center" style="height:10px;"><b><span style="font-size:10px;text-transform:uppercase;" t-field="line.product_id.name"/></b></div></td></tr>
+                                <tr style="height:13px;"><td valign="center" style="height:13px;">
+                                    <div align="center" style="height:13px;">
+                                        <t t-foreach="line.product_id.product_template_attribute_value_ids" t-as="attribute" style="display: inline">
+                                            <b><span style="font-size:13px;text-transform:uppercase;" t-esc="attribute.name"/>. </b>
+                                        </t>
+                                    </div>
+                                    </td>
+                                </tr>
+                                <tr style="height:20px;"><td valign="center" style="height:10px;"><div align="center" style="height:11px;"><b><span style="font-size:10px;" t-field="line.product_id.default_code"/></b></div></td></tr>
+                                
+                                <tr style="height:55px;"><td valign="center">
+                                    <div align="center" style="height:47px;">
+                                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', line.product_id.barcode, 200, 200)" style="width:80%;height:35px;"/>
+                                        <span style="font-size:10px;" t-field="line.product_id.barcode"/>
+                                    </div>
+                                </td></tr>
+                                
+                                <tr style="height:30px;"><td valign="center" ><div align="center" style="height:30px;"><h4 t-field="line.product_id.lst_price" t-options="{'widget': 'monetary', 'display_currency': line.product_id.company_id.currency_id}"/></div></td></tr>
+
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>    
+    
+</odoo>

@@ -18,6 +18,8 @@
 
     'data': [
         'data/amirah_data.xml',
+        'data/paper_format.xml',
+        'views/formato_etiquetas.xml',
     ],
 
     'qweb': [
