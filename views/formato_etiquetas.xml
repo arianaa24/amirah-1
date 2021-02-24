@@ -16,28 +16,26 @@
                 <t t-foreach="doc.move_ids_without_package" t-as="line">
                     <t t-foreach="range(int(line.product_uom_qty))" t-as="l">
                         <div class="page" style="page-break-after: always;">
-                            <table style="width:100%;">
+                            <table style="width:100%;height:100%;">
                                
                                 <tr style="height:17px;"><td valign="center"><div align="center" style="height:17px;"><p style="line-height:60%;"><b><span style="font-size:10px;text-transform:uppercase;" t-field="line.product_id.name"/></b></p></div></td></tr>
-                                <tr style="height:15px;"><td valign="center" style="height:15px;">
-                                    <div align="center" style="height:10px;">
+                                <tr style="height:15px;"><td valign="center">
+                                    <div align="center" style="height:15px;">
                                         <t t-foreach="line.product_id.product_template_attribute_value_ids" t-as="attribute" style="display: inline">
                                             <b><span style="font-size:13px;text-transform:uppercase;" t-esc="attribute.name"/>. </b>
                                         </t>
                                     </div>
                                     </td>
                                 </tr>
-                                <tr style="height:20px;"><td valign="center" style="height:20px;"><div align="center" style="height:20px;"><b><span style="font-size:10px;" t-field="line.product_id.default_code"/></b></div></td></tr>
+                                <tr style="height:20px;"><td valign="center"><div align="center" style="height:20px;"><b><span style="font-size:10px;" t-field="line.product_id.default_code"/></b></div></td></tr>
                                 
-                                <tr style="height:50px;"><td valign="center">
-                                    <div align="center" style="height:50px;">
-                                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', line.product_id.barcode, 200, 200)" style="width:100%;height:35px;"/>
+                                <tr style="height:65px;"><td valign="center">
+                                    <div align="center" style="height:65px;">  
+                                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', quote_plus(line.product_id.barcode or ''), 600, 150)" style="width:100%;height:3rem"/>
                                         <span style="font-size:10px;" t-field="line.product_id.barcode"/>
                                     </div>
                                 </td></tr>
-                                
-                                <tr style="height:25px;"><td valign="center" ><div align="center" style="height:25px;"><h4 t-field="line.product_id.lst_price" t-options="{'widget': 'monetary', 'display_currency': line.product_id.company_id.currency_id}"/></div></td></tr>
-
+                                <tr style="height:15px;"><td valign="center" ><div align="center" style="height:15px;"><h4 t-field="line.product_id.lst_price" t-options="{'widget': 'monetary', 'display_currency': line.product_id.company_id.currency_id}"/></div></td></tr>
                             </table>
                         </div>
                     </t>
