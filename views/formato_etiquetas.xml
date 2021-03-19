@@ -18,9 +18,9 @@
                         <div class="page" style="page-break-after: always;">
                             <table style="width:100%;height:100%;">
                                
-                                <tr style="height:15px;"><td valign="center"><div align="center" style="height:15px;"><p style="line-height:60%;"><b><span style="font-size:8px;text-transform:uppercase;" t-field="line.product_id.name"/></b></p></div></td></tr>
-                                <tr style="height:11px;"><td valign="center">
-                                    <div align="center" style="height:11px;">
+                                <tr style="height:12px;"><td><div align="center" style="height:12px;vertical-align:bottom"><p style="line-height:60%;"><b><span style="font-size:8px;text-transform:uppercase;" t-field="line.product_id.name"/></b></p></div></td></tr>
+                                <tr style="height:11px;"><td>
+                                    <div align="center" style="height:11px;;vertical-align:middle">
                                         <t t-foreach="line.product_id.product_template_attribute_value_ids" t-as="attribute" style="display: inline">
                                             <b><span style="font-size:9px;text-transform:uppercase;" t-esc="attribute.name"/>. </b>
                                         </t>
@@ -29,12 +29,12 @@
                                 </tr>
                                 <tr style="height:20px;"><td valign="center"><div align="center" style="height:20px;"><b><span style="font-size:10px;" t-field="line.product_id.default_code"/></b></div></td></tr>
                                 
-                                <tr><td valign="center">
+                                <tr><td style="vertical-align:middle">
                                     <div align="center" >  
                                         <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', quote_plus(line.product_id.barcode or ''), 600, 150)" style="width:100%;height:4rem"/>
                                         <p style="line-height:90%;">
                                             <span style="font-size:9px;" t-field="line.product_id.barcode"/>
-                                            <br/><span style="font-size:19px;" t-field="line.product_id.lst_price" t-options="{'widget': 'monetary', 'display_currency': line.product_id.company_id.currency_id}"/>
+                                            <br/><span style="font-size:17px;" t-field="line.product_id.lst_price" t-options="{'widget': 'monetary', 'display_currency': line.product_id.company_id.currency_id}"/>
                                         </p>
                                     </div>
                                 </td></tr>
