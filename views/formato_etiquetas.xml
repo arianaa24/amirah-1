@@ -48,7 +48,7 @@
     
     
     <report
-        id="report_formato_etiquetas"
+        id="report_formato_etiquetas_product"
         model="product.product"
         string="Etiquetas"
         name="amirah.formato_etiquetas_product"
