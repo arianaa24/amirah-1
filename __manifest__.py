@@ -20,6 +20,9 @@
         'data/amirah_data.xml',
         'data/paper_format.xml',
         'views/formato_etiquetas.xml',
+        'wizard/reporte_inventario.xml',
+        'wizard/reporte_ventas.xml',
+        'security/ir.model.access.csv',
     ],
 
     'qweb': [
