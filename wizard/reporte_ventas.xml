@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="amirah_reporte_ventas_view_form" model="ir.ui.view">
+        <field name="name">amirah.reporte.ventas.form</field>
+        <field name="model">amirah.reporte_ventas</field>
+        <field name="arch" type="xml">
+            <form string="Fecha">
+                <group>
+                    <field name="fecha_desde"/>
+                    <field name="fecha_hasta"/>
+                </group>
+                <group>
+                    <field name="name" invisible="1"/>
+                    <field name="archivo" readonly="1" filename="name"/>
+                </group>
+                <footer>
+                    <button name="print_report_excel" string="Reporte excel"  type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <act_window id="window_reporte_ventas" name="Reporte de Ventas" res_model="amirah.reporte_ventas" view_mode="form" target="new"/>
+    <menuitem action="window_reporte_ventas" id="menu_asistente_reporte_ventas" parent="account.menu_finance_reports"/>  
+    
+</odoo>
