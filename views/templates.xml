@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <template id="amirah_theme_variants_view" inherit_id="sale.variants">
+            <xpath expr="//li[hasclass('js_attribute_value')]" position="replace">
+                <li class="form-group js_attribute_value" style="margin: 0;">
+                    <t t-if="website.producto_agotado(product._get_possible_variants(), ptav) == False">
+                        <label class="custom-control custom-radio">
+                            <div>
+                                <input type="radio"
+                                    t-attf-class="custom-control-input js_variant_change radio_input #{ptal.attribute_id.create_variant}"
+                                    t-att-checked="ptav in combination"
+                                    t-att-name="'ptal-%s' % ptal.id"
+                                    t-att-value="ptav.id"
+                                    t-att-data-value_id="ptav.id"
+                                    t-att-data-value_name="ptav.name"
+                                    t-att-data-attribute_name="ptav.attribute_id.name"
+                                    t-att-data-is_custom="ptav.is_custom"
+                                    t-att-data-is_single_and_custom="single_and_custom" />
+                                <div class="radio_input_value custom-control-label font-weight-normal">
+                                    <span t-field="ptav.name"/>
+                                    <span class="badge badge-pill badge-light border" t-if="ptav.price_extra">
+                                        <t t-out="ptav.price_extra > 0 and '+' or '-'"/>
+                                        <span t-out="abs(ptav.price_extra)" class="variant_price_extra" style="white-space: nowrap;"
+                                            t-options='{
+                                                "widget": "monetary",
+                                                "from_currency": product.currency_id,
+                                                "display_currency": (pricelist or product).currency_id
+                                            }'/>
+                                    </span>
+                                </div>
+                            </div>
+                        </label>
+                    </t>
+                </li>
+            </xpath>
+        </template>
+        
+    </data>
+</odoo>

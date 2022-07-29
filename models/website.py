@@ -6,12 +6,19 @@ import logging
 class Website(models.Model):
     _inherit = "website"
 
-    def producto_agotado(self,productos):
+    def producto_agotado(self,productos, attribute=None):
         agotado = True
-        logging.warn('HOLA')
-        ubicacion_id = self.env['website'].get_current_website().warehouse_id.lot_stock_id
-        cantidades = self.env['stock.quant'].search([('location_id','=',ubicacion_id.id),('quantity','>',0),('product_id','in',productos.ids)])
-        if cantidades:
+        #ubicacion_id = self.env['website'].get_current_website().warehouse_id.lot_stock_id
+        cantidades = self.env['stock.quant'].search([('quantity','>',0),('product_id','in',productos.ids)])
+        cantidad = 0
+        for quant in cantidades:
+            if attribute:
+                if attribute.name in quant.display_name:
+                    cantidad = quant.available_quantity
+            else:
+                cantidad += quant.available_quantity
+                
+        if cantidad and cantidad> 0:
             agotado = False
         return agotado
 
