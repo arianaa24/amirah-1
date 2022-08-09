@@ -14,7 +14,7 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['website','base','stock'],
+    'depends': ['website','base','stock', 'theme_prime', 'sale'],
 
     'data': [
         'data/amirah_data.xml',
@@ -23,6 +23,7 @@
         'wizard/reporte_inventario.xml',
         'wizard/reporte_ventas.xml',
         'security/ir.model.access.csv',
+        'views/templates.xml',
     ],
 
     'qweb': [
