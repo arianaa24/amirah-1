@@ -4,8 +4,9 @@
         
         <template id="amirah_theme_variants_view" inherit_id="sale.variants">
             <xpath expr="//li[hasclass('js_attribute_value')]" position="replace">
+                <t t-set="result" t-value="website.producto_agotado(product._get_possible_variants(), ptav)"/>
                 <li class="form-group js_attribute_value" style="margin: 0;">
-                    <t t-if="website.producto_agotado(product._get_possible_variants(), ptav) == False">
+                    <t t-if="result[0] == 'False'">
                         <label class="custom-control custom-radio">
                             <div>
                                 <input type="radio"
@@ -19,7 +20,14 @@
                                     t-att-data-is_custom="ptav.is_custom"
                                     t-att-data-is_single_and_custom="single_and_custom" />
                                 <div class="radio_input_value custom-control-label font-weight-normal">
-                                    <span t-field="ptav.name"/>
+                                    <span t-field="ptav.name"/> 
+                                    <group>
+                                        <br/><b>Existencias:</b>
+                                        <br/><span t-esc="result[2]['tienda']"/>: <span t-esc="result[2]['existencias']"/> unidades
+                                        <t t-if="result[1] > 3">
+                                            <br/><span t-esc="result[3]['tienda']"/>: <span t-esc="result[3]['existencias']"/> unidades
+                                        </t>
+                                    </group>
                                     <span class="badge badge-pill badge-light border" t-if="ptav.price_extra">
                                         <t t-out="ptav.price_extra > 0 and '+' or '-'"/>
                                         <span t-out="abs(ptav.price_extra)" class="variant_price_extra" style="white-space: nowrap;"
