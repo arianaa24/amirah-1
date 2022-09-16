@@ -37,6 +37,8 @@ class Website(models.Model):
                 cantidad += quant.available_quantity
         if cantidad and cantidad > 0:
             agotado = False
+        if attribute.attribute_id.create_variant == 'no_variant':
+            agotado = False
         return agotado
 
     def _actualizar_producto(self):
