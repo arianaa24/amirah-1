@@ -5,8 +5,6 @@ var VariantMixin = require('website_sale.VariantMixin');
 
 const originalOnChangeCombination = VariantMixin._onChangeCombination;
 VariantMixin._onChangeCombination = function (ev, $parent, combination) {
-    console.log('Entra')
-    console.log($parent)
     var rpc = require('web.rpc');
     var $message = $parent.find(".availability_messages");
     rpc.query({
@@ -19,7 +17,6 @@ VariantMixin._onChangeCombination = function (ev, $parent, combination) {
 
     originalOnChangeCombination.apply(this, [ev, $parent, combination]);
 };
-
 
 return VariantMixin;
 });

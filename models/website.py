@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from odoo import api, fields, models, _
-import logging
 
 class Website(models.Model):
     _inherit = "website"
@@ -21,7 +20,6 @@ class Website(models.Model):
                 existencias += str(tienda) + ': ' + str(quant.available_quantity) + ' unidades. '
         if existencias:
             mensaje = 'Existencias: ' + existencias
-        logging.warning(mensaje)
         return mensaje
 
     def producto_agotado(self,productos, attribute=None):
@@ -47,12 +45,10 @@ class Website(models.Model):
             for pt in producto_template_ids:
                 productos_activos = pt._get_possible_variants()
                 producto_agotado = self.producto_agotado(productos_activos)
-                logging.warning(pt.name + 'agotado: ' + str(producto_agotado))
                 if producto_agotado == True:
                     pt.website_published = False
                 else:
                     pt.website_published = True
-                logging.warning(pt.name + ' Publicado: ' + str(pt.website_published))
                     
     # def producto_agotado(self,productos, attribute=None):
     #     res = {'agotado': True, 'almacenes':[]}
