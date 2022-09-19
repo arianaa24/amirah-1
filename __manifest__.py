@@ -31,7 +31,7 @@
     
     'assets': {
         'web.assets_frontend': [
-            'amirah-1/static/src/js/variant_mixin.js',
+            'amirah/static/src/js/variant_mixin.js',
         ],
     }
 }
