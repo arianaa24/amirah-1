@@ -28,4 +28,10 @@
 
     'qweb': [
     ],
+    
+    'assets': {
+        'web.assets_frontend': [
+            'amirah/static/src/js/variant_mixin.js',
+        ],
+    }
 }
