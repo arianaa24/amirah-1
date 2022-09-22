@@ -31,11 +31,11 @@ class Website(models.Model):
             if attribute:
                 if attribute.id in quant.product_id.product_template_variant_value_ids.ids:
                     cantidad += quant.available_quantity
+                if attribute.attribute_id.create_variant == 'no_variant':
+                    agotado = False   
             else:
                 cantidad += quant.available_quantity
         if cantidad and cantidad > 0:
-            agotado = False
-        if attribute.attribute_id.create_variant == 'no_variant':
             agotado = False
         return agotado
 
