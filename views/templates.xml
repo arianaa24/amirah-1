@@ -13,7 +13,7 @@
                         t-att-data-is_custom="ptav.is_custom"
                         t-att-selected="ptav in combination"
                         t-att-data-is_single="single"
-                        t-att-data-is_single_and_custom="single_and_custom" t-if="result == False && website">
+                        t-att-data-is_single_and_custom="single_and_custom" t-if="result == False &amp;&amp; website">
                         <span t-field="ptav.name"/>
                         <t t-call="sale.badge_extra_price"/>
                     </option>
@@ -24,7 +24,7 @@
                     <t t-foreach="ptal.product_template_value_ids._only_active()" t-as="ptav">
                         <t t-if="website" t-set="result" t-value="website.producto_agotado(product._get_possible_variants(), ptav)"/>
                         <li class="list-inline-item mr-1">
-                            <label t-if="result == False && website">
+                            <label t-if="result == False &amp;&amp; website">
                                 <div>
                                     <input type="radio"
                                         t-attf-class="js_variant_change radio_input d-none #{ptal.attribute_id.create_variant}"
