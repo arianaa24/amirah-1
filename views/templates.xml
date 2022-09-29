@@ -49,9 +49,9 @@
                                                 }'/>
                                         </span>
                                     </div>
-                                </label>
-                            </li>
-                        </t>
+                                </div>
+                            </label>
+                        </li>
                     </t>
                 </ul>
             </xpath>
