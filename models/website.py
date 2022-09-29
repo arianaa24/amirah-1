@@ -19,16 +19,16 @@ class Website(models.Model):
             mensaje = 'Existencias: ' + existencias
         return mensaje
 
-    def producto_agotado(self,productos, attribute=None):
+    def producto_agotado(self,productos, attribute_value=None):
         agotado = True
         #ubicacion_id = self.env['website'].get_current_website().warehouse_id.lot_stock_id
         cantidades = self.env['stock.quant'].search([('quantity','>',0),('product_id','in',productos.ids)])
         cantidad = 0
         for quant in cantidades:
-            if attribute:
-                if attribute.id in quant.product_id.product_template_variant_value_ids.ids:
+            if attribute_value:
+                if attribute_value.id in quant.product_id.product_template_attribute_value_ids.ids:
                     cantidad += quant.available_quantity
-                if attribute.attribute_id.create_variant == 'no_variant':
+                if attribute_value.attribute_id.create_variant == 'no_variant':
                     agotado = False   
             else:
                 cantidad += quant.available_quantity
