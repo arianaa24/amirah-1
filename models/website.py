@@ -12,12 +12,13 @@ class Website(models.Model):
         cantidades = self.env['stock.quant'].search([('quantity','>',0),('product_id.id','=',producto)])
         for quant in cantidades:
             if ubicaciones < 2:
-                if quant.location_id.warehouse_id:
-                    tienda = quant.location_id.warehouse_id.name
-                else:
-                    tienda = quant.location_id.name
-                ubicaciones += 1
-                existencias += str(tienda) + ': ' + str(quant.available_quantity) + ' unidades. '
+                if quant.location_id and quant.location_id.usage == 'internal':
+                    if quant.location_id.warehouse_id:
+                        tienda = quant.location_id.warehouse_id.name
+                    else:
+                        tienda = quant.location_id.name
+                    ubicaciones += 1
+                    existencias += str(tienda) + ': ' + str(quant.available_quantity) + ' unidades. '
         if existencias:
             mensaje = 'Existencias: ' + existencias
         return mensaje
