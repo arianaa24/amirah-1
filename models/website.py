@@ -6,19 +6,15 @@ class Website(models.Model):
     _inherit = "website"
     
     def existencias(self, producto):
-        ubicaciones = 0
         existencias = ''
         mensaje = ''
-        cantidades = self.env['stock.quant'].search([('quantity','>',0),('product_id.id','=',producto)])
+        cantidades = self.env['stock.quant'].search([('quantity','>',0),('product_id.id','=',producto),('location_id.usage','=','internal')], limit=2)
         for quant in cantidades:
-            if ubicaciones < 2:
-                if quant.location_id and quant.location_id.usage == 'internal':
-                    if quant.location_id.warehouse_id:
-                        tienda = quant.location_id.warehouse_id.name
-                    else:
-                        tienda = quant.location_id.name
-                    ubicaciones += 1
-                    existencias += str(tienda) + ': ' + str(quant.available_quantity) + ' unidades. '
+            if quant.location_id.warehouse_id:
+                tienda = quant.location_id.warehouse_id.name
+            else:
+                tienda = quant.location_id.name
+            existencias += str(tienda) + ': ' + str(quant.available_quantity) + ' unidades. '
         if existencias:
             mensaje = 'Existencias: ' + existencias
         return mensaje
