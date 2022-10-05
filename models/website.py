@@ -22,7 +22,7 @@ class Website(models.Model):
     def producto_agotado(self,productos, attribute_value=None):
         agotado = True
         #ubicacion_id = self.env['website'].get_current_website().warehouse_id.lot_stock_id
-        cantidades = self.env['stock.quant'].search([('quantity','>',0),('product_id','in',productos.ids)])
+        cantidades = self.env['stock.quant'].search([('quantity','>',0),('product_id','in',productos.ids), ('location_id.usage','=','internal')])
         cantidad = 0
         for quant in cantidades:
             if attribute_value:

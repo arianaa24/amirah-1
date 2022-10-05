@@ -12,7 +12,7 @@ VariantMixin._onChangeCombination = function (ev, $parent, combination) {
         method: 'existencias',
         args: [[], combination.product_id]
     }).then(function (result) {
-        $message.text(result);
+        $message.after( "<strong>" + result + "</strong>" );
     });
 
     originalOnChangeCombination.apply(this, [ev, $parent, combination]);
