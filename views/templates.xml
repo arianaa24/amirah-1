@@ -25,7 +25,8 @@
                         <t t-set="result" t-value="website.producto_agotado(product._get_possible_variants(), ptav) if website else False"/>
                         <li class="list-inline-item mr-1">
                             <label t-if="result == False">
-                                <div>
+                                <t t-set="value" t-value="request.params.get('attrib').split('-')[0]" t-if="request.params.get('attrib')"/>
+                                <div t-att-class="'invisible' if value == '9' and ptal.attribute_id.name == 'Tallas Generales' else ''">
                                     <input type="radio"
                                         t-attf-class="js_variant_change radio_input d-none #{ptal.attribute_id.create_variant}"
                                         t-att-checked="ptav in combination"
