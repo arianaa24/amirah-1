@@ -24,6 +24,7 @@
         'wizard/reporte_ventas.xml',
         'security/ir.model.access.csv',
         'views/templates.xml',
+        'views/stock_location_views.xml',
     ],
 
     'qweb': [
