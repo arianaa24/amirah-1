@@ -12,8 +12,8 @@ VariantMixin._onChangeCombination = function (ev, $parent, combination) {
         method: 'existencias',
         args: [[], combination.product_id]
     }).then(function (result) {
-        $( ".mensaje" ).remove();
-        $message.after( "<strong class='mensaje'>" + result + "</strong>" );
+        $( ".amirah-mensaje" ).remove();
+        $message.after( "<strong class='amirah-mensaje'>" + result + "</strong>" );
     });
 
     originalOnChangeCombination.apply(this, [ev, $parent, combination]);
