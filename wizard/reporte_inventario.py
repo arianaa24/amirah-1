@@ -140,15 +140,15 @@ class WizardReporteInventario(models.TransientModel):
                                         productos_general[categoria.id][producto.categ_id.name]['L'] += producto.qty_available
                                     elif attribute_line.name == 'XL':
                                         productos_general[categoria.id][producto.categ_id.name]['XL'] += producto.qty_available
-                                    elif attribute_line.name == '1X':
+                                    elif attribute_line.name == '1XL':
                                         productos_general[categoria.id][producto.categ_id.name]['1X'] += producto.qty_available
-                                    elif attribute_line.name == '2X':
+                                    elif attribute_line.name == '2XL':
                                         productos_general[categoria.id][producto.categ_id.name]['2X'] += producto.qty_available
-                                    elif attribute_line.name == '3X':
+                                    elif attribute_line.name == '3XL':
                                         productos_general[categoria.id][producto.categ_id.name]['3X'] += producto.qty_available
-                                    elif attribute_line.name == '4X':
+                                    elif attribute_line.name == '4XL':
                                         productos_general[categoria.id][producto.categ_id.name]['4X'] += producto.qty_available
-                                    elif attribute_line.name == '5X':
+                                    elif attribute_line.name == '5XL':
                                         productos_general[categoria.id][producto.categ_id.name]['5X'] += producto.qty_available
                                     else:
                                         productos_general[categoria.id][producto.categ_id.name]['sin_talla'] += producto.qty_available

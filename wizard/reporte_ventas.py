@@ -115,7 +115,7 @@ class WizardReporteVentas(models.TransientModel):
                             if line.product_id.product_template_variant_value_ids:
                                 for attribute_line in line.product_id.product_template_variant_value_ids:
                                     if attribute_line.name == '5':
-                                        productos_general[categoria.id][line.product_id]['5'] += line.quantity
+                                        productos_general[categoria.id][line.product_id.categ_id.name]['5'] += line.quantity
                                     elif attribute_line.name == '6':
                                         productos_general[categoria.id][line.product_id.categ_id.name]['6'] += line.quantity
                                     elif attribute_line.name == '7':
@@ -142,21 +142,21 @@ class WizardReporteVentas(models.TransientModel):
                                         productos_general[categoria.id][line.product_id.categ_id.name]['L'] += line.quantity
                                     elif attribute_line.name == 'XL':
                                         productos_general[categoria.id][line.product_id.categ_id.name]['XL'] += line.quantity
-                                    elif attribute_line.name == '1X':
+                                    elif attribute_line.name == '1XL':
                                         productos_general[categoria.id][line.product_id.categ_id.name]['1X'] += line.quantity
-                                    elif attribute_line.name == '2X':
+                                    elif attribute_line.name == '2XL':
                                         productos_general[categoria.id][line.product_id.categ_id.name]['2X'] += line.quantity
-                                    elif attribute_line.name == '3X':
+                                    elif attribute_line.name == '3XL':
                                         productos_general[categoria.id][line.product_id.categ_id.name]['3X'] += line.quantity
-                                    elif attribute_line.name == '4X':
+                                    elif attribute_line.name == '4XL':
                                         productos_general[categoria.id][line.product_id.categ_id.name]['4X'] += line.quantity
-                                    elif attribute_line.name == '5X':
+                                    elif attribute_line.name == '5XL':
                                         productos_general[categoria.id][line.product_id.categ_id.name]['5X'] += line.quantity
                                     else:
                                         productos_general[categoria.id][line.product_id.categ_id.name]['sin_talla'] += line.quantity
                             else:
                                 productos_general[categoria.id][line.product_id.categ_id.name]['sin_talla'] += line.quantity
-                    
+                   
                     for subcategoría in productos_general[categoria.id]:
                         totales['total_vendidos'] += productos_general[categoria.id][subcategoría]['total_vendidos']
                         totales['sin_talla'] += productos_general[categoria.id][subcategoría]['sin_talla']
