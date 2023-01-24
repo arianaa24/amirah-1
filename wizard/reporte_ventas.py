@@ -106,7 +106,7 @@ class WizardReporteVentas(models.TransientModel):
                         else:
                             hoja.write(x, y, 0)
                         y += 1
-                x += 1
+                    x += 1
                 
             hoja.write(x, 1, 'TOTALES', bold)  
             hoja.write(x, 3, totales['total_vendidos'], bold)  
