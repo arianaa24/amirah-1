@@ -76,7 +76,7 @@ class WizardReporteInventario(models.TransientModel):
                                 productos_general[categoria.id][producto.categ_id.name][attribute_line.name] += producto.qty_available
                                 totales[attribute_line.name] += producto.qty_available
                             else:
-                                no_es_talla = 1
+                                no_es_talla += 1
                         if no_es_talla == len(producto.product_template_variant_value_ids):
                             productos_general[categoria.id][producto.categ_id.name]['sin_talla'] += producto.qty_available
                             totales['sin_talla'] += producto.qty_available

@@ -78,7 +78,7 @@ class WizardReporteVentas(models.TransientModel):
                                 productos_general[categoria.id][line.product_id.categ_id.name][attribute_line.name] += line.quantity
                                 totales[attribute_line.name] += line.quantity
                             else:
-                                no_es_talla = 1
+                                no_es_talla += 1
                         if no_es_talla == len(line.product_id.product_template_variant_value_ids):
                             productos_general[categoria.id][line.product_id.categ_id.name]['sin_talla'] += line.quantity
                             totales['sin_talla'] += line.quantity
